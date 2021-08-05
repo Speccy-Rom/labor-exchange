@@ -8,6 +8,7 @@ fastapi = "*"
 uvicorn = "*"
 sqlalchemy = "*"
 databases = {extras = ["postgresql"], version = "*"}
+psycopg2-binary = "*"
 
 [dev-packages]
 
