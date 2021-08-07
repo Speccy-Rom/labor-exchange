@@ -9,6 +9,7 @@ uvicorn = "*"
 sqlalchemy = "*"
 databases = {extras = ["postgresql"], version = "*"}
 psycopg2-binary = "*"
+passlib = "*"
 
 [dev-packages]
 
