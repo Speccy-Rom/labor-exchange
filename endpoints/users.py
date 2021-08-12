@@ -2,9 +2,8 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 from repositories.users import UserRepository
-from models.user import User
+from models.user import User, UserIn
 from endpoints.depends import get_user_repository
-
 
 router = APIRouter()
 
@@ -13,5 +12,12 @@ router = APIRouter()
 async def read_users(
         users: UserRepository = Depends(get_user_repository),
         limit: int = 100,
-        skip: int = 100):
+        skip: int = 0):
     return await users.get_all(limit=limit, skip=skip)
+
+
+@router.post('/', response_model=User)
+async def create(
+        user: UserIn,
+        users: UserRepository = Depends(get_user_repository)):
+    return await users.create(u=user)
