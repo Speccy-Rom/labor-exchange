@@ -17,7 +17,13 @@ async def read_users(
 
 
 @router.post('/', response_model=User)
-async def create(
+async def create_user(
         user: UserIn,
         users: UserRepository = Depends(get_user_repository)):
     return await users.create(u=user)
+
+
+@router.put('/', response_model=User)
+async def update_user(id: int, user: UserIn,
+                      users: UserRepository = Depends(get_user_repository)):
+    return await users.update(id=id, u=user)
