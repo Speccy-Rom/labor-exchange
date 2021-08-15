@@ -12,6 +12,8 @@ psycopg2-binary = "*"
 passlib = "*"
 pydantic = {extras = ["email"], version = "*"}
 bcrypt = "*"
+jose = "*"
+python-jose = "*"
 
 [dev-packages]
 
