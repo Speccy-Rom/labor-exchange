@@ -2,7 +2,7 @@ import datetime
 
 from core.security import hash_password
 from db.users import users
-from typing import List, Mapping, Optional
+from typing import List, Optional
 from models.user import User, UserIn
 from repositories.base import BaseRepository
 
@@ -13,7 +13,7 @@ class UserRepository(BaseRepository):
         query = users.select().limit(limit).offset(skip)
         return await self.database.fetch_all(query=query)
 
-    async def get_by_id(self, id: int) -> User:
+    async def get_by_id(self, id: int) -> Optional[User]:
         query = users.select().where(users.c.id == id)
         user = await self.database.fetch_one(query)
         if user is None:
